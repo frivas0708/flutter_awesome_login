@@ -1,16 +1,18 @@
 # awesome_login
 
-Paquete Flutter para autenticación con:
+Paquete Flutter: Login / Registro / Recuperar contraseña con:
 
-- Pestañas: Login / Registro / Recuperar contraseña
+- Card flip animation (login / register / recover)
+- Logo flotante
 - Responsive (móvil, tablet, web)
-- Validaciones básicas integradas
-- Soporte biométrico (FaceID / Fingerprint) con `local_auth`
-- Fácil de personalizar via `AwesomeLoginConfig`
+- Validaciones integradas
+- Biometría (local_auth)
+- Social sign-in opcional (Google, Apple)
+- Fácil de personalizar vía `AwesomeLoginConfig`
 
-## Instalación
+## Instalación (local)
 
-Añade a tu `pubspec.yaml`:
+En el proyecto consumidor:
 
 ```yaml
 dependencies:

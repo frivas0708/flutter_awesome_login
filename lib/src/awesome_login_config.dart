@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Configuration object to customize the package
+/// Configuración pública para personalizar el paquete.
 class AwesomeLoginConfig {
   final Widget? logo;
   final Color backgroundColor;
@@ -10,30 +10,32 @@ class AwesomeLoginConfig {
   final double cardElevation;
   final Color cardShadowColor;
 
-  // Texts
+  // Textos
   final String loginTitle;
   final String registerTitle;
   final String recoverTitle;
-
-  // Placeholders / Labels
-  final String emailLabel;
-  final String emailHint;
-  final String passwordLabel;
-  final String passwordHint;
-  final String nameLabel;
-  final String nameHint;
-
-  // Button texts
   final String loginButtonText;
   final String registerButtonText;
   final String recoverButtonText;
   final String biometricButtonText;
 
+  //URL API
+  final String apiUrl;
+
+  // Callbacks principales
+  final Future<String?> Function(String email, String password)? onLogin;
+  final Future<String?> Function(String name, String email, String password)? onRegister;
+  final Future<String?> Function(String email)? onRecover;
+
+  // Biometría
+  final bool enableBiometrics;
+  final Future<String?> Function()? onBiometricAuth;
+
+  // Social
+  final bool enableGoogle;
+  final bool enableApple;
   final Future<String?> Function()? onGoogleSignIn;
   final Future<String?> Function()? onAppleSignIn;
-
-  final String googleButtonText;
-  final String appleButtonText;
 
   const AwesomeLoginConfig({
     this.logo,
@@ -46,19 +48,63 @@ class AwesomeLoginConfig {
     this.loginTitle = 'Iniciar Sesión',
     this.registerTitle = 'Registro',
     this.recoverTitle = 'Recuperar Contraseña',
-    this.emailLabel = 'Correo',
-    this.emailHint = 'correo@ejemplo.com',
-    this.passwordLabel = 'Contraseña',
-    this.passwordHint = '********',
-    this.nameLabel = 'Nombre',
-    this.nameHint = 'Tu nombre completo',
     this.loginButtonText = 'Iniciar sesión',
     this.registerButtonText = 'Registrar',
     this.recoverButtonText = 'Enviar',
     this.biometricButtonText = 'Usar biometría',
+    this.apiUrl = "Url not set",
+    this.onLogin,
+    this.onRegister,
+    this.onRecover,
+    this.enableBiometrics = false,
+    this.onBiometricAuth,
+    this.enableGoogle = false,
+    this.enableApple = false,
     this.onGoogleSignIn,
     this.onAppleSignIn,
-    this.googleButtonText = "Continuar con Google",
-    this.appleButtonText = "Continuar con Apple",
   });
+
+  /// Convenience copyWith to tweak config in example/demo
+  AwesomeLoginConfig copyWith({
+    Widget? logo,
+    Color? backgroundColor,
+    Color? primaryColor,
+    Color? accentColor,
+    Color? cardColor,
+    double? cardElevation,
+    Color? cardShadowColor,
+    bool? enableBiometrics,
+    Future<String?> Function()? onBiometricAuth,
+    bool? enableGoogle,
+    bool? enableApple,
+    Future<String?> Function()? onGoogleSignIn,
+    Future<String?> Function()? onAppleSignIn,
+  }) {
+    return AwesomeLoginConfig(
+      logo: logo ?? this.logo,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
+      accentColor: accentColor ?? this.accentColor,
+      cardColor: cardColor ?? this.cardColor,
+      cardElevation: cardElevation ?? this.cardElevation,
+      cardShadowColor: cardShadowColor ?? this.cardShadowColor,
+      loginTitle: loginTitle,
+      registerTitle: registerTitle,
+      recoverTitle: recoverTitle,
+      loginButtonText: loginButtonText,
+      registerButtonText: registerButtonText,
+      recoverButtonText: recoverButtonText,
+      biometricButtonText: biometricButtonText,
+      apiUrl: apiUrl,
+      onLogin: onLogin,
+      onRegister: onRegister,
+      onRecover: onRecover,
+      enableBiometrics: enableBiometrics ?? this.enableBiometrics,
+      onBiometricAuth: onBiometricAuth ?? this.onBiometricAuth,
+      enableGoogle: enableGoogle ?? this.enableGoogle,
+      enableApple: enableApple ?? this.enableApple,
+      onGoogleSignIn: onGoogleSignIn ?? this.onGoogleSignIn,
+      onAppleSignIn: onAppleSignIn ?? this.onAppleSignIn,
+    );
+  }
 }

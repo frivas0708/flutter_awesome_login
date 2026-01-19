@@ -1,141 +1,93 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'awesome_login_config.dart';
-import 'tabs/awesome_login_tab.dart';
+import 'widgets/awesome_login_card.dart';
 
-/// Widget principal expuesto por el paquete
-class AwesomeLoginScreen extends StatefulWidget {
+/// Pantalla principal expuesta por el paquete.
+/// Se coloca el logo flotando sobre la tarjeta con flip animation interna.
+class AwesomeLoginScreen extends StatelessWidget {
   final AwesomeLoginConfig config;
 
-  /// Callbacks: devolverán null si OK o String con mensaje de error/resultado
-  final Future<String?> Function(String email, String password) onLogin;
-  final Future<String?> Function(String name, String email, String password)?
-      onRegister;
-  final Future<String?> Function(String email)? onRecover;
-
-  const AwesomeLoginScreen({
-    super.key,
-    required this.config,
-    required this.onLogin,
-    this.onRegister,
-    this.onRecover,
-  });
-
-  @override
-  State<AwesomeLoginScreen> createState() => _AwesomeLoginScreenState();
-}
-
-class _AwesomeLoginScreenState extends State<AwesomeLoginScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  bool isWide = false;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 3, vsync: this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  double _cardWidthFor(double maxWidth) {
-    if (maxWidth > 1000) return 720;
-    if (maxWidth > 700) return 560;
-    if (maxWidth > 450) return 420;
-    return maxWidth * 0.95;
-  }
+  const AwesomeLoginScreen({super.key, required this.config});
 
   @override
   Widget build(BuildContext context) {
-    final cfg = widget.config;
-
     return Scaffold(
-      backgroundColor: cfg.backgroundColor,
-      body: LayoutBuilder(builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final cardWidth = _cardWidthFor(width);
-        isWide = width > 700;
-
-        return Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeOut,
-              width: cardWidth,
-              padding: EdgeInsets.all(isWide ? 28 : 18),
-              child: Card(
-                elevation: cfg.cardElevation,
-                shadowColor: cfg.cardShadowColor,
-                color: cfg.cardColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Logo
-                      if (cfg.logo != null)
-                        SizedBox(
-                            height: 100,
-                            child: Center(child: cfg.logo))
-                      else
-                        Icon(Icons.lock_outline,
-                            size: 90, color: cfg.primaryColor),
-
-                      const SizedBox(height: 14),
-
-                      // Tabs
-                      TabBar(
-                        controller: _tabController,
-                        labelColor: cfg.accentColor,
-                        unselectedLabelColor: Colors.black54,
-                        indicator: BoxDecoration(
-                          color: cfg.primaryColor,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        tabs: [
-                          Tab(text: cfg.loginTitle),
-                          Tab(text: cfg.registerTitle),
-                          Tab(text: cfg.recoverTitle),
-                        ],
-                      ),
-
-                      const SizedBox(height: 18),
-
-                      // Tab views
-                      SizedBox(
-                        height: isWide ? 420 : 420,
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: [
-                            AwesomeLoginTab.login(
-                              config: cfg,
-                              onSubmit: widget.onLogin,
-                            ),
-                            AwesomeLoginTab.register(
-                              config: cfg,
-                              onSubmit: widget.onRegister,
-                            ),
-                            AwesomeLoginTab.recover(
-                              config: cfg,
-                              onSubmit: widget.onRecover,
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+      resizeToAvoidBottomInset: true,
+      backgroundColor: config.backgroundColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return _buildLoginContent(constraints);
+              },
             ),
           ),
-        );
-      }),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoginContent(BoxConstraints constraints) {
+    final isWide = constraints.maxWidth > 700;
+    final width = isWide ? 520.0 : constraints.maxWidth * 0.95;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 60.0),
+      child: SizedBox(
+        width: width,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            // Logo
+            SizedBox(
+              height: 125,
+              child: config.logo ??
+                   CircleAvatar(
+                     radius: 44,
+                     backgroundColor: config.primaryColor,
+                     child: Icon(Icons.lock, color: config.accentColor, size: 40),
+              ),
+            ),
+            SizedBox(
+              height: 260,
+              child: kDebugMode
+                  ? Center(
+                      child: Text(
+                        (config.apiUrl.contains('dev.') ? 'QA' : 'PROD'),
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.7),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : null,
+            ),
+            SizedBox(
+              height: 290,
+              child: kDebugMode
+                  ? Center(
+                      child: Text(
+                        config.apiUrl,
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.7),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : null,
+            ),
+
+            // Card (se coloca con padding para que el logo quede encima)
+            Padding(
+              padding: const EdgeInsets.only(top: 145.0),
+              child: AwesomeLoginCard(config: config),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
