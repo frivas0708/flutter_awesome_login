@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../services/biometric_service.dart';
 import 'social_buttons.dart';
 
 class LoginForm extends StatefulWidget {
@@ -37,7 +36,6 @@ class _LoginFormState extends State<LoginForm> {
   final _email = TextEditingController();
   final _pass = TextEditingController();
   bool _loading = false;
-  final BiometricService _biometric = BiometricService();
 
   @override
   void dispose() {
@@ -60,36 +58,23 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   Future<void> _doBiometric() async {
-    final ok = await _biometric.authenticate();
-    if (!ok) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(backgroundColor: Colors.red, content: Text('Biometría no disponible o falló')),
-        );
-      }
-      return;
+    if (widget.onBiometricAuth == null) return;
+
+    setState(() => _loading = true);
+
+    final res = await widget.onBiometricAuth!();
+
+    setState(() => _loading = false);
+
+    if (res != null && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(backgroundColor: Colors.red, content: Text(res)),
+      );
     }
-    // Si config provee onBiometricAuth, llamarla para que backend valide / retorne mensajes.
-    if (widget.onBiometricAuth != null) {
-      setState(() => _loading = true);
-      final res = await widget.onBiometricAuth!();
-      setState(() => _loading = false);
-      if (res != null) {
-        if (mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(backgroundColor: Colors.red, content: Text(res)));
-        }
-      }
-      return;
-    }
-    // Si no hay callback, por convención llamamos onLogin con special credentials:
-    await _submit('biometric', 'biometric');
   }
 
-  Future<bool> get enableBiometrics async {
-    if (!widget.enableBiometrics) return false;
-    return await _biometric.canUseBiometricLogin();
+  bool get enableBiometrics {
+    return widget.enableBiometrics && widget.onBiometricAuth != null;
   }
 
   @override
@@ -172,24 +157,14 @@ class _LoginFormState extends State<LoginForm> {
           onPressed: widget.onSwitchRegister,
           child: const Text('Crear cuenta'),
         ),
-        FutureBuilder<bool>(
-          future: enableBiometrics,
-          builder: (context, snapshot) {
-            if (snapshot.data == true) {
-              return Column(
-                children: [
-                  const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    onPressed: _doBiometric,
-                    icon: const Icon(Icons.fingerprint),
-                    label: const Text('Ingresar con biometría'),
-                  ),
-                ],
-              );
-            }
-            return const SizedBox.shrink();
-          },
-        ),
+        if (widget.enableBiometrics && widget.onBiometricAuth != null) ...[
+          const SizedBox(height: 8),
+          OutlinedButton.icon(
+            onPressed: _doBiometric,
+            icon: const Icon(Icons.fingerprint),
+            label: const Text('Ingresar con biometría'),
+          ),
+        ],
         if (widget.enableGoogle || widget.enableApple) ...[
           const SizedBox(height: 8),
           SocialButtons(

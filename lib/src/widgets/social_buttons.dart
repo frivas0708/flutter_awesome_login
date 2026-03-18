@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../services/google_service.dart';
-import '../services/apple_service.dart';
 
 typedef SocialResult = void Function(String? email, String provider);
 
 class SocialButtons extends StatelessWidget {
   final bool showGoogle;
   final bool showApple;
-  final Future<String?> Function()? onGooglePress; // optional override
+
+  final Future<String?> Function()? onGooglePress;
   final Future<String?> Function()? onApplePress;
+
   final SocialResult? onSocialResult;
 
   const SocialButtons({
@@ -22,24 +22,29 @@ class SocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final googleService = GoogleService();
-    final appleService = AppleService();
-
     return Column(
       children: [
         if (showGoogle)
           SizedBox(
             width: double.infinity,
             child: OutlinedButton.icon(
-              icon: Image.network('https://img.icons8.com/color/48/google-logo.png', width: 20, height: 20),
+              icon: Image.network(
+                'https://img.icons8.com/color/48/google-logo.png',
+                width: 20,
+                height: 20,
+              ),
               label: const Text('Ingresar con Google'),
               onPressed: () async {
-                final email = onGooglePress != null ? await onGooglePress!() : await googleService.signIn();
+                if (onGooglePress == null) return;
+
+                final email = await onGooglePress!();
                 onSocialResult?.call(email, 'google');
               },
             ),
           ),
+
         if (showApple) const SizedBox(height: 8),
+
         if (showApple)
           SizedBox(
             width: double.infinity,
@@ -47,7 +52,9 @@ class SocialButtons extends StatelessWidget {
               icon: const Icon(Icons.apple),
               label: const Text('Ingresar con Apple'),
               onPressed: () async {
-                final email = onApplePress != null ? await onApplePress!() : await appleService.signIn();
+                if (onApplePress == null) return;
+
+                final email = await onApplePress!();
                 onSocialResult?.call(email, 'apple');
               },
             ),
