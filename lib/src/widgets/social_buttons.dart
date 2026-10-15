@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import '../models/login_result.dart';
+import 'google_button.dart';
+import 'apple_button.dart';
 
-typedef SocialResult = void Function(String? email, String provider);
+typedef SocialResult = void Function(LoginResult result, String provider);
 
 class SocialButtons extends StatelessWidget {
   final bool showGoogle;
   final bool showApple;
 
-  final Future<String?> Function()? onGooglePress;
-  final Future<String?> Function()? onApplePress;
+  final Future<LoginResult> Function()? onGooglePress;
+  final Future<LoginResult> Function()? onApplePress;
 
   final SocialResult? onSocialResult;
 
@@ -27,35 +30,27 @@ class SocialButtons extends StatelessWidget {
         if (showGoogle)
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton.icon(
-              icon: Image.network(
-                'https://img.icons8.com/color/48/google-logo.png',
-                width: 20,
-                height: 20,
-              ),
-              label: const Text('Ingresar con Google'),
+            child: GoogleButton(
+              text: 'Ingresar con Google',
               onPressed: () async {
                 if (onGooglePress == null) return;
-
-                final email = await onGooglePress!();
-                onSocialResult?.call(email, 'google');
+                final res = await onGooglePress!();
+                onSocialResult?.call(res, 'google');
               },
             ),
           ),
 
-        if (showApple) const SizedBox(height: 8),
+        if (showApple && showGoogle) const SizedBox(height: 8),
 
         if (showApple)
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton.icon(
-              icon: const Icon(Icons.apple),
-              label: const Text('Ingresar con Apple'),
+            child: AppleButton(
+              text: 'Ingresar con Apple',
               onPressed: () async {
                 if (onApplePress == null) return;
-
-                final email = await onApplePress!();
-                onSocialResult?.call(email, 'apple');
+                final res = await onApplePress!();
+                onSocialResult?.call(res, 'apple');
               },
             ),
           ),

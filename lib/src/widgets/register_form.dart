@@ -40,10 +40,11 @@ class _RegisterFormState extends State<RegisterForm> {
     );
     setState(() => _loading = false);
     if (res != null) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(res)));
+      }
     }
   }
 

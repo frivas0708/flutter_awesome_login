@@ -1,0 +1,92 @@
+{
+  "example/lib/main.dart": {
+    "mtime": 1792082926.1410997,
+    "seen": 1792087768.620455,
+    "ast_hash": "cdd229fc4527994143c573c8a362afca",
+    "semantic_hash": "cdd229fc4527994143c573c8a362afca"
+  },
+  "lib/awesome_login.dart": {
+    "mtime": 1778309437.2676983,
+    "seen": 1792087768.6204615,
+    "ast_hash": "fd7bae539c9a0004a79809269a19f5fa",
+    "semantic_hash": "fd7bae539c9a0004a79809269a19f5fa"
+  },
+  "lib/src/awesome_login_config.dart": {
+    "mtime": 1792044221.589989,
+    "seen": 1792087768.6204643,
+    "ast_hash": "fda6ce0012de400472a556ccf7f3b3cc",
+    "semantic_hash": "fda6ce0012de400472a556ccf7f3b3cc"
+  },
+  "lib/src/awesome_login_screen.dart": {
+    "mtime": 1792082926.1361935,
+    "seen": 1792087768.620466,
+    "ast_hash": "5dcc0634705f9d821beb38f57208a64c",
+    "semantic_hash": "5dcc0634705f9d821beb38f57208a64c"
+  },
+  "lib/src/models/login_result.dart": {
+    "mtime": 1778309421.8258247,
+    "seen": 1792087768.6204672,
+    "ast_hash": "e2b82fa0d26c5d6d17dd5acfcb2a42e4",
+    "semantic_hash": "e2b82fa0d26c5d6d17dd5acfcb2a42e4"
+  },
+  "lib/src/widgets/apple_button.dart": {
+    "mtime": 1778309655.9470396,
+    "seen": 1792087768.6204681,
+    "ast_hash": "bea5ade24dbe4ccc58fde3e8eaf10815",
+    "semantic_hash": "bea5ade24dbe4ccc58fde3e8eaf10815"
+  },
+  "lib/src/widgets/awesome_login_card.dart": {
+    "mtime": 1792044221.5947838,
+    "seen": 1792087768.6204698,
+    "ast_hash": "49d487f91bfb757ff4ca206593b8e9cf",
+    "semantic_hash": "49d487f91bfb757ff4ca206593b8e9cf"
+  },
+  "lib/src/widgets/biometric_button.dart": {
+    "mtime": 1773865535.192297,
+    "seen": 1792087768.620471,
+    "ast_hash": "ae0f7d39059a5090d63d570d0d8591e8",
+    "semantic_hash": "ae0f7d39059a5090d63d570d0d8591e8"
+  },
+  "lib/src/widgets/change_password_form.dart": {
+    "mtime": 1778309536.5507393,
+    "seen": 1792087768.620472,
+    "ast_hash": "323dfd172df0ffc85dc44050621612c0",
+    "semantic_hash": "323dfd172df0ffc85dc44050621612c0"
+  },
+  "lib/src/widgets/forgot_password_form.dart": {
+    "mtime": 1792082985.9142897,
+    "seen": 1792087768.6204734,
+    "ast_hash": "62ade87aa572f206c6e210c3a3567d82",
+    "semantic_hash": "62ade87aa572f206c6e210c3a3567d82"
+  },
+  "lib/src/widgets/google_button.dart": {
+    "mtime": 1773860910.6640563,
+    "seen": 1792087768.6204743,
+    "ast_hash": "3be063fb850bac7fa1013c6d7d1f03b9",
+    "semantic_hash": "3be063fb850bac7fa1013c6d7d1f03b9"
+  },
+  "lib/src/widgets/login_form.dart": {
+    "mtime": 1792041698.9223902,
+    "seen": 1792087768.620476,
+    "ast_hash": "10759274adac5240991d3108297bbe94",
+    "semantic_hash": "10759274adac5240991d3108297bbe94"
+  },
+  "lib/src/widgets/register_form.dart": {
+    "mtime": 1792082985.9152873,
+    "seen": 1792087768.620477,
+    "ast_hash": "6c0d17600b022379214d770a8a21eec0",
+    "semantic_hash": "6c0d17600b022379214d770a8a21eec0"
+  },
+  "lib/src/widgets/social_buttons.dart": {
+    "mtime": 1778309615.0957632,
+    "seen": 1792087768.6204782,
+    "ast_hash": "679670b5f681d2191b858f366db9b246",
+    "semantic_hash": "679670b5f681d2191b858f366db9b246"
+  },
+  "lib/src/widgets/two_factor_form.dart": {
+    "mtime": 1778309534.5377398,
+    "seen": 1792087768.6204796,
+    "ast_hash": "0199ef8b8961e12f09915b119b37a91b",
+    "semantic_hash": "0199ef8b8961e12f09915b119b37a91b"
+  }
+}

@@ -1,12 +1,20 @@
 name: awesome_login
-description: A reusable, responsive login/register/recover package with biometrics and validations.
-version: 1.0.2
+description: A customizable and animated Flutter authentication card with login, registration, password recovery, 2FA, biometric auth, and custom onboarding support.
+version: 1.0.3
 homepage: https://github.com/frivas0708/flutter_awesome_login
 repository: https://github.com/frivas0708/flutter_awesome_login
+issue_tracker: https://github.com/frivas0708/flutter_awesome_login/issues
+
+topics:
+  - authentication
+  - login
+  - biometrics
+  - ui
+  - 2fa
 
 environment:
-  sdk: ^3.8.1
-  flutter: ">=1.17.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:

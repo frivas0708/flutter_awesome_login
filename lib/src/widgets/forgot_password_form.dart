@@ -31,10 +31,11 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
     final res = await widget.onRecover(_email.text.trim());
     setState(() => _loading = false);
     if (res != null) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(res)));
+      }
     }
   }
 

@@ -14,26 +14,26 @@ class DemoApp extends StatelessWidget {
     return MaterialApp(
       title: 'Awesome Login Demo',
       theme: ThemeData(primarySwatch: Colors.teal),
-      home: DemoPage(),
+      home: const DemoPage(),
     );
   }
 }
 
 class DemoPage extends StatelessWidget {
-  DemoPage({super.key});
+  const DemoPage({super.key});
 
-  final cfg = AwesomeLoginConfig(
-    logo: Image.network('https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/assets/widgets/owl-2.jpg'),
-    primaryColor: Colors.teal,
-    enableBiometrics: true,
-    enableGoogle: true,
-    enableApple: true,
-  );
-
-  Future<String?> onLogin(String email, String pass) async {
+  Future<LoginResult> onLogin(String email, String pass) async {
     await Future.delayed(const Duration(seconds: 1));
-    if ((email == 'test@test.com' && pass == '123456') || email == 'biometric' || email == 'google' || email == 'apple') return null;
-    return 'Credenciales incorrectas';
+    if (email == '2fa') {
+      return const LoginResult(requires2FA: true);
+    }
+    if (email == 'temp') {
+      return const LoginResult(requiresPasswordChange: true);
+    }
+    if ((email == 'test@test.com' && pass == '123456') || email == 'biometric' || email == 'google' || email == 'apple') {
+      return const LoginResult(success: true);
+    }
+    return const LoginResult(success: false, errorMessage: 'Credenciales incorrectas');
   }
 
   Future<String?> onRegister(String name, String email, String pass) async {
@@ -46,38 +46,54 @@ class DemoPage extends StatelessWidget {
     return 'Email enviado a $email';
   }
 
-  Future<String?> googleSignIn() async {
-    // Si quieres usar google_sign_in, agrega en example/pubspec.yaml y usa GoogleService directamente.
-    // Aquí devolvemos 'google' para demo.
-    await Future.delayed(const Duration(milliseconds: 500));
-    return 'google'; // email placeholder
+  Future<String?> onVerify2FA(String code) async {
+    await Future.delayed(const Duration(seconds: 1));
+    if (code == '1234') return null; // success
+    return 'Código inválido';
   }
 
-  Future<String?> appleSignIn() async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    return 'apple';
+  Future<String?> onChangePassword(String newPassword) async {
+    await Future.delayed(const Duration(seconds: 1));
+    if (newPassword.length >= 6) return null; // success
+    return 'Contraseña muy corta';
   }
 
-  Future<String?> biometricHandler() async {
+  Future<LoginResult> googleSignIn() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    return const LoginResult(success: true);
+  }
+
+  Future<LoginResult> appleSignIn() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    return const LoginResult(success: true);
+  }
+
+  Future<LoginResult> biometricHandler() async {
     await Future.delayed(const Duration(milliseconds: 300));
-    return null;
+    return const LoginResult(success: true);
   }
 
   @override
   Widget build(BuildContext context) {
-    final finalCfg = cfg.copyWith(
+    final cfg = AwesomeLoginConfig(
+      logo: Image.network('https://raw.githubusercontent.com/flutter/assets-for-api-docs/master/assets/widgets/owl-2.jpg'),
+      primaryColor: Colors.teal,
       enableBiometrics: true,
       onBiometricAuth: biometricHandler,
       enableGoogle: true,
       onGoogleSignIn: googleSignIn,
       enableApple: true,
       onAppleSignIn: appleSignIn,
+      onLogin: onLogin,
+      onRegister: onRegister,
+      onRecover: onRecover,
+      onVerify2FA: onVerify2FA,
+      onChangePassword: onChangePassword,
     );
 
     return AwesomeLoginScreen(
-      config: finalCfg.copyWith(),
-      // Note: config contains social / biometric callbacks,
-      // but we still pass main callbacks here to handle email/password flows:
+      config: cfg,
     );
   }
 }
+

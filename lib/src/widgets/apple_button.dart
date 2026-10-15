@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
 
 class AppleButton extends StatelessWidget {
   final String text;
@@ -13,7 +12,8 @@ class AppleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!Platform.isIOS && !Platform.isMacOS) {
+    final platform = Theme.of(context).platform;
+    if (platform != TargetPlatform.iOS && platform != TargetPlatform.macOS) {
       return const SizedBox.shrink();
     }
 

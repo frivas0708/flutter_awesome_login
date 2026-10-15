@@ -58,7 +58,7 @@ class AwesomeLoginScreen extends StatelessWidget {
                       child: Text(
                         (config.apiUrl.contains('dev.') ? 'QA' : 'PROD'),
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -72,7 +72,7 @@ class AwesomeLoginScreen extends StatelessWidget {
                       child: Text(
                         config.apiUrl,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

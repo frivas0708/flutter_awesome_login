@@ -1,0 +1,364 @@
+{
+  "communities": {
+    "0": [
+      "animation",
+      "animationcontroller",
+      "awesome_login_config_dart",
+      "change_password_form_dart",
+      "dart_math",
+      "forgot_password_form_dart",
+      "lib_src_awesome_login_config_awesomeloginconfig",
+      "lib_src_awesome_login_screen",
+      "lib_src_awesome_login_screen_build",
+      "lib_src_awesome_login_screen_buildlogincontent",
+      "lib_src_awesome_login_screen_config",
+      "lib_src_widgets_awesome_login_card",
+      "lib_src_widgets_awesome_login_card_anim",
+      "lib_src_widgets_awesome_login_card_build",
+      "lib_src_widgets_awesome_login_card_buildanimatedcard",
+      "lib_src_widgets_awesome_login_card_buildside",
+      "lib_src_widgets_awesome_login_card_config",
+      "lib_src_widgets_awesome_login_card_controller",
+      "lib_src_widgets_awesome_login_card_createstate",
+      "lib_src_widgets_awesome_login_card_dispose",
+      "lib_src_widgets_awesome_login_card_flipto",
+      "lib_src_widgets_awesome_login_card_initstate",
+      "lib_src_widgets_awesome_login_card_mode",
+      "lib_src_widgets_awesome_login_card_reverseflip",
+      "lib_src_widgets_awesome_login_card_targetmode",
+      "login_form_dart",
+      "package_flutter_foundation_dart",
+      "register_form_dart",
+      "two_factor_form_dart",
+      "widgets_awesome_login_card_dart"
+    ],
+    "1": [
+      "example_lib_main",
+      "example_lib_main_applesignin",
+      "example_lib_main_biometrichandler",
+      "example_lib_main_build",
+      "example_lib_main_demoapp",
+      "example_lib_main_demopage",
+      "example_lib_main_googlesignin",
+      "example_lib_main_main",
+      "example_lib_main_onchangepassword",
+      "example_lib_main_onlogin",
+      "example_lib_main_onrecover",
+      "example_lib_main_onregister",
+      "example_lib_main_onverify2fa",
+      "lib_src_awesome_login_screen_awesomeloginscreen",
+      "lib_src_widgets_apple_button",
+      "lib_src_widgets_apple_button_applebutton",
+      "lib_src_widgets_apple_button_build",
+      "lib_src_widgets_apple_button_text",
+      "lib_src_widgets_biometric_button",
+      "lib_src_widgets_biometric_button_biometricbutton",
+      "lib_src_widgets_biometric_button_build",
+      "lib_src_widgets_biometric_button_text",
+      "lib_src_widgets_google_button",
+      "lib_src_widgets_google_button_build",
+      "lib_src_widgets_google_button_googlebutton",
+      "lib_src_widgets_google_button_text",
+      "lib_src_widgets_social_buttons_socialbuttons",
+      "package_awesome_login_awesome_login_dart",
+      "package_flutter_material_dart",
+      "statelesswidget"
+    ],
+    "2": [
+      "color",
+      "lib_src_awesome_login_config",
+      "lib_src_awesome_login_config_accentcolor",
+      "lib_src_awesome_login_config_apiurl",
+      "lib_src_awesome_login_config_backgroundcolor",
+      "lib_src_awesome_login_config_biometricbuttontext",
+      "lib_src_awesome_login_config_cardcolor",
+      "lib_src_awesome_login_config_cardelevation",
+      "lib_src_awesome_login_config_cardshadowcolor",
+      "lib_src_awesome_login_config_changepasswordbuttontext",
+      "lib_src_awesome_login_config_changepasswordtitle",
+      "lib_src_awesome_login_config_copywith",
+      "lib_src_awesome_login_config_enableapple",
+      "lib_src_awesome_login_config_enablebiometrics",
+      "lib_src_awesome_login_config_enablegoogle",
+      "lib_src_awesome_login_config_enablerememberemail",
+      "lib_src_awesome_login_config_loginbuttontext",
+      "lib_src_awesome_login_config_logintitle",
+      "lib_src_awesome_login_config_logo",
+      "lib_src_awesome_login_config_oncustomregister",
+      "lib_src_awesome_login_config_primarycolor",
+      "lib_src_awesome_login_config_recoverbuttontext",
+      "lib_src_awesome_login_config_recovertitle",
+      "lib_src_awesome_login_config_registerbuttontext",
+      "lib_src_awesome_login_config_registertitle",
+      "lib_src_awesome_login_config_rememberemailtext",
+      "lib_src_awesome_login_config_twofactortitle",
+      "lib_src_awesome_login_config_verifybuttontext",
+      "widget"
+    ],
+    "3": [
+      "lib_src_widgets_login_form",
+      "lib_src_widgets_login_form_build",
+      "lib_src_widgets_login_form_createstate",
+      "lib_src_widgets_login_form_dispose",
+      "lib_src_widgets_login_form_dobiometric",
+      "lib_src_widgets_login_form_email",
+      "lib_src_widgets_login_form_enableapple",
+      "lib_src_widgets_login_form_enablebiometrics",
+      "lib_src_widgets_login_form_enablegoogle",
+      "lib_src_widgets_login_form_enablerememberemail",
+      "lib_src_widgets_login_form_formkey",
+      "lib_src_widgets_login_form_handleresult",
+      "lib_src_widgets_login_form_initstate",
+      "lib_src_widgets_login_form_loading",
+      "lib_src_widgets_login_form_loadsavedemail",
+      "lib_src_widgets_login_form_onswitchchangepassword",
+      "lib_src_widgets_login_form_onswitchforgot",
+      "lib_src_widgets_login_form_onswitchregister",
+      "lib_src_widgets_login_form_onswitchtwofactor",
+      "lib_src_widgets_login_form_pass",
+      "lib_src_widgets_login_form_rememberemail",
+      "lib_src_widgets_login_form_rememberemailkey",
+      "lib_src_widgets_login_form_rememberemailtext",
+      "lib_src_widgets_login_form_savedemailkey",
+      "lib_src_widgets_login_form_storage",
+      "lib_src_widgets_login_form_submit",
+      "package_flutter_secure_storage_flutter_secure_storage_dart",
+      "social_buttons_dart",
+      "static_const"
+    ],
+    "4": [
+      "lib_src_widgets_awesome_login_card_awesomelogincard",
+      "lib_src_widgets_awesome_login_card_awesomelogincardstate",
+      "lib_src_widgets_forgot_password_form",
+      "lib_src_widgets_forgot_password_form_build",
+      "lib_src_widgets_forgot_password_form_createstate",
+      "lib_src_widgets_forgot_password_form_dispose",
+      "lib_src_widgets_forgot_password_form_email",
+      "lib_src_widgets_forgot_password_form_forgotpasswordform",
+      "lib_src_widgets_forgot_password_form_forgotpasswordformstate",
+      "lib_src_widgets_forgot_password_form_formkey",
+      "lib_src_widgets_forgot_password_form_loading",
+      "lib_src_widgets_forgot_password_form_onswitchlogin",
+      "lib_src_widgets_forgot_password_form_submit",
+      "lib_src_widgets_login_form_loginform",
+      "lib_src_widgets_login_form_loginformstate",
+      "singletickerproviderstatemixin",
+      "state",
+      "statefulwidget",
+      "voidcallback"
+    ],
+    "5": [
+      "formstate",
+      "lib_src_widgets_register_form",
+      "lib_src_widgets_register_form_build",
+      "lib_src_widgets_register_form_createstate",
+      "lib_src_widgets_register_form_dispose",
+      "lib_src_widgets_register_form_email",
+      "lib_src_widgets_register_form_formkey",
+      "lib_src_widgets_register_form_loading",
+      "lib_src_widgets_register_form_name",
+      "lib_src_widgets_register_form_onswitchlogin",
+      "lib_src_widgets_register_form_pass",
+      "lib_src_widgets_register_form_registerform",
+      "lib_src_widgets_register_form_registerformstate",
+      "lib_src_widgets_register_form_submit"
+    ],
+    "6": [
+      "lib_src_widgets_change_password_form",
+      "lib_src_widgets_change_password_form_build",
+      "lib_src_widgets_change_password_form_buttontext",
+      "lib_src_widgets_change_password_form_changepasswordform",
+      "lib_src_widgets_change_password_form_changepasswordformstate",
+      "lib_src_widgets_change_password_form_createstate",
+      "lib_src_widgets_change_password_form_dispose",
+      "lib_src_widgets_change_password_form_formkey",
+      "lib_src_widgets_change_password_form_loading",
+      "lib_src_widgets_change_password_form_oncancel",
+      "lib_src_widgets_change_password_form_pass1",
+      "lib_src_widgets_change_password_form_pass2",
+      "lib_src_widgets_change_password_form_submit",
+      "lib_src_widgets_change_password_form_title"
+    ],
+    "7": [
+      "lib_src_widgets_two_factor_form",
+      "lib_src_widgets_two_factor_form_build",
+      "lib_src_widgets_two_factor_form_buttontext",
+      "lib_src_widgets_two_factor_form_codecontroller",
+      "lib_src_widgets_two_factor_form_createstate",
+      "lib_src_widgets_two_factor_form_dispose",
+      "lib_src_widgets_two_factor_form_formkey",
+      "lib_src_widgets_two_factor_form_loading",
+      "lib_src_widgets_two_factor_form_oncancel",
+      "lib_src_widgets_two_factor_form_submit",
+      "lib_src_widgets_two_factor_form_title",
+      "lib_src_widgets_two_factor_form_twofactorform",
+      "lib_src_widgets_two_factor_form_twofactorformstate"
+    ],
+    "8": [
+      "apple_button_dart",
+      "google_button_dart",
+      "lib_src_widgets_social_buttons",
+      "lib_src_widgets_social_buttons_build",
+      "lib_src_widgets_social_buttons_onsocialresult",
+      "lib_src_widgets_social_buttons_showapple",
+      "lib_src_widgets_social_buttons_showgoogle",
+      "lib_src_widgets_social_buttons_socialresult",
+      "models_login_result_dart",
+      "typedef"
+    ],
+    "9": [
+      "lib_src_models_login_result",
+      "lib_src_models_login_result_errormessage",
+      "lib_src_models_login_result_loginresult",
+      "lib_src_models_login_result_requires2fa",
+      "lib_src_models_login_result_requirespasswordchange",
+      "lib_src_models_login_result_success",
+      "string"
+    ],
+    "10": [
+      "lib_awesome_login",
+      "lib_awesome_login_awesome_login",
+      "library",
+      "src_awesome_login_config_dart",
+      "src_awesome_login_screen_dart",
+      "src_models_login_result_dart"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06896551724137931,
+    "1": 0.07586206896551724,
+    "2": 0.06896551724137931,
+    "3": 0.06896551724137931,
+    "4": 0.12280701754385964,
+    "5": 0.15384615384615385,
+    "6": 0.15384615384615385,
+    "7": 0.16666666666666666,
+    "8": 0.2,
+    "9": 0.2857142857142857,
+    "10": 0.3333333333333333
+  },
+  "gods": [
+    {
+      "id": "lib_src_widgets_awesome_login_card_awesomelogincardstate",
+      "label": "_AwesomeLoginCardState",
+      "degree": 4
+    },
+    {
+      "id": "lib_src_awesome_login_config_awesomeloginconfig",
+      "label": "AwesomeLoginConfig",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_awesome_login_card_awesomelogincard",
+      "label": "AwesomeLoginCard",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_forgot_password_form_forgotpasswordform",
+      "label": "ForgotPasswordForm",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_forgot_password_form_forgotpasswordformstate",
+      "label": "_ForgotPasswordFormState",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_login_form_loginform",
+      "label": "LoginForm",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_login_form_loginformstate",
+      "label": "_LoginFormState",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_register_form_registerform",
+      "label": "RegisterForm",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_register_form_registerformstate",
+      "label": "_RegisterFormState",
+      "degree": 3
+    },
+    {
+      "id": "lib_src_widgets_change_password_form_changepasswordform",
+      "label": "ChangePasswordForm",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "_ChangePasswordFormState",
+      "target": "State",
+      "source_files": [
+        "lib/src/widgets/change_password_form.dart",
+        null
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "note": "Bridges community 4 → community 6"
+    },
+    {
+      "source": "_RegisterFormState",
+      "target": "State",
+      "source_files": [
+        "lib/src/widgets/register_form.dart",
+        null
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "note": "Bridges community 4 → community 5"
+    },
+    {
+      "source": "_TwoFactorFormState",
+      "target": "State",
+      "source_files": [
+        "lib/src/widgets/two_factor_form.dart",
+        null
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "note": "Bridges community 4 → community 7"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `AwesomeLoginConfig` connect `awesome_login_card.dart` to `awesome_login_config.dart`?",
+      "why": "High betweenness centrality (0.028) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `build`, `_buildLoginContent`, `config` to the rest of the system?",
+      "why": "133 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `awesome_login_card.dart` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `_AwesomeLoginCardState` connect `forgot_password_form.dart` to `awesome_login_card.dart`?",
+      "why": "High betweenness centrality (0.014) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `main.dart` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07586206896551724 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `_LoginFormState` connect `forgot_password_form.dart` to `login_form.dart`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `awesome_login_config.dart` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

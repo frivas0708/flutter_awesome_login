@@ -1,18 +1,27 @@
-# CHANGELOGS
+# CHANGELOG
 
-## 1.0.2 - Initial release
+## 1.0.3
 
-- Remove services and refactor codes
-- Now reusable
+- Added `onCustomRegister` callback to `AwesomeLoginConfig` to support external onboarding and custom registration wizards.
+- Added custom title options for 2FA, password change, and password recovery.
+- Fixed deprecation warnings for `withValues(alpha: ...)`.
+- Cleaned up lint rules and improved documentation for pub.dev release.
 
-## 1.0.1 - Change tabs to cards
+## 1.0.2
 
-- Better expirience with slide cards
+- Refactored architecture to make the package completely standalone and reusable across multiple applications.
+- Removed hardcoded project dependencies.
 
-## 1.0.0 - Initial release
+## 1.0.1
 
-- Responsive login/register/recover component
-- Validations integrated
-- Biometric support via local_auth
-- Optional Google & Apple Sign-In hooks
-- Example app included
+- Switched to smooth animated flip cards for login, registration, and password recovery.
+
+## 1.0.0
+
+- Initial release:
+  - Responsive animated authentication component.
+  - Built-in input validations.
+  - Biometric authentication via `local_auth`.
+  - Optional Google and Apple Sign-In support.
+  - Two-Factor Authentication (2FA) verification form.
+  - Example app included.

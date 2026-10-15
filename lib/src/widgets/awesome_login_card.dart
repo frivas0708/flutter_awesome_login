@@ -5,8 +5,10 @@ import '../awesome_login_config.dart';
 import 'login_form.dart';
 import 'register_form.dart';
 import 'forgot_password_form.dart';
+import 'two_factor_form.dart';
+import 'change_password_form.dart';
 
-enum _Mode { login, register, recover }
+enum _Mode { login, register, recover, twoFactor, changePassword }
 
 class AwesomeLoginCard extends StatefulWidget {
   final AwesomeLoginConfig config;
@@ -46,7 +48,7 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
 
     // Reglas para flip inverso:
     // - Si volvemos al login desde register o recover → flip hacia la derecha (inverso)
-    if ((_mode == _Mode.register || _mode == _Mode.recover) && m == _Mode.login) {
+    if ((_mode != _Mode.login) && m == _Mode.login) {
       _reverseFlip = true;
     } else {
       _reverseFlip = false;
@@ -68,14 +70,18 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
         return LoginForm(
           key: const ValueKey('login'),
           onLogin: cfg.onLogin!,
-          onSwitchRegister: () => _flipTo(_Mode.register),
+          onSwitchRegister: cfg.onCustomRegister ?? () => _flipTo(_Mode.register),
           onSwitchForgot: () => _flipTo(_Mode.recover),
+          onSwitchTwoFactor: () => _flipTo(_Mode.twoFactor),
+          onSwitchChangePassword: () => _flipTo(_Mode.changePassword),
           enableBiometrics: cfg.enableBiometrics,
           onBiometricAuth: cfg.onBiometricAuth,
           enableGoogle: cfg.enableGoogle,
           enableApple: cfg.enableApple,
           onGoogleSignIn: cfg.onGoogleSignIn,
           onAppleSignIn: cfg.onAppleSignIn,
+          enableRememberEmail: cfg.enableRememberEmail,
+          rememberEmailText: cfg.rememberEmailText,
         );
       case _Mode.register:
         return RegisterForm(
@@ -88,6 +94,22 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           key: const ValueKey('recover'),
           onRecover: cfg.onRecover!,
           onSwitchLogin: () => _flipTo(_Mode.login),
+        );
+      case _Mode.twoFactor:
+        return TwoFactorForm(
+          key: const ValueKey('twoFactor'),
+          onVerify: cfg.onVerify2FA ?? (code) async => '2FA no configurado',
+          onCancel: () => _flipTo(_Mode.login),
+          title: cfg.twoFactorTitle,
+          buttonText: cfg.verifyButtonText,
+        );
+      case _Mode.changePassword:
+        return ChangePasswordForm(
+          key: const ValueKey('changePassword'),
+          onChangePassword: cfg.onChangePassword ?? (pass) async => 'Cambio de contraseña no configurado',
+          onCancel: () => _flipTo(_Mode.login),
+          title: cfg.changePasswordTitle,
+          buttonText: cfg.changePasswordButtonText,
         );
     }
   }
