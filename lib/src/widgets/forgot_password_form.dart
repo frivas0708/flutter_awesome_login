@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 class ForgotPasswordForm extends StatefulWidget {
   final Future<String?> Function(String email) onRecover;
   final VoidCallback onSwitchLogin;
+  final VoidCallback? onEnterResetCode;
+  final String title;
+  final String buttonText;
 
   const ForgotPasswordForm({
     super.key,
     required this.onRecover,
     required this.onSwitchLogin,
+    this.onEnterResetCode,
+    this.title = 'Recuperar Contraseña',
+    this.buttonText = 'Enviar',
   });
 
   @override
@@ -45,7 +51,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Recuperar Contraseña',
+          widget.title,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 12),
@@ -77,10 +83,9 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               const SizedBox(height: 12),
               SizedBox(
                 width: double.infinity,
-                height: 44,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     backgroundColor: Theme.of(context).primaryColor,
                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
                     shape: RoundedRectangleBorder(
@@ -89,14 +94,27 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                   ),
                   onPressed: _loading ? null : _submit,
                   child: _loading
-                      ? const CircularProgressIndicator()
-                      : const Text('Enviar instrucciones'),
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                      : Text(widget.buttonText),
                 ),
               ),
             ],
           ),
         ),
         const SizedBox(height: 14),
+        if (widget.onEnterResetCode != null) ...[
+          TextButton(
+            onPressed: widget.onEnterResetCode,
+            child: const Text('¿Ya tienes un código? Ingresar código'),
+          ),
+        ],
         TextButton(
           onPressed: widget.onSwitchLogin,
           child: const Text('Volver al login'),

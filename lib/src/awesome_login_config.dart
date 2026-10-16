@@ -33,6 +33,7 @@ class AwesomeLoginConfig {
   final Future<String?> Function(String name, String email, String password)? onRegister;
   final VoidCallback? onCustomRegister;
   final Future<String?> Function(String email)? onRecover;
+  final VoidCallback? onEnterResetCode;
   final Future<String?> Function(String code)? onVerify2FA;
   final Future<String?> Function(String newPassword)? onChangePassword;
 
@@ -74,6 +75,7 @@ class AwesomeLoginConfig {
     this.onRegister,
     this.onCustomRegister,
     this.onRecover,
+    this.onEnterResetCode,
     this.onVerify2FA,
     this.onChangePassword,
     this.enableBiometrics = false,

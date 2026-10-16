@@ -82,6 +82,8 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           onAppleSignIn: cfg.onAppleSignIn,
           enableRememberEmail: cfg.enableRememberEmail,
           rememberEmailText: cfg.rememberEmailText,
+          loginButtonText: cfg.loginButtonText,
+          biometricButtonText: cfg.biometricButtonText,
         );
       case _Mode.register:
         return RegisterForm(
@@ -94,6 +96,9 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           key: const ValueKey('recover'),
           onRecover: cfg.onRecover!,
           onSwitchLogin: () => _flipTo(_Mode.login),
+          onEnterResetCode: cfg.onEnterResetCode,
+          title: cfg.recoverTitle,
+          buttonText: cfg.recoverButtonText,
         );
       case _Mode.twoFactor:
         return TwoFactorForm(

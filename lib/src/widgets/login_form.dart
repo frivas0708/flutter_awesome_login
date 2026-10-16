@@ -20,6 +20,8 @@ class LoginForm extends StatefulWidget {
 
   final bool enableRememberEmail;
   final String rememberEmailText;
+  final String loginButtonText;
+  final String biometricButtonText;
 
   const LoginForm({
     super.key,
@@ -36,6 +38,8 @@ class LoginForm extends StatefulWidget {
     this.onAppleSignIn,
     this.enableRememberEmail = true,
     this.rememberEmailText = 'Recordar correo',
+    this.loginButtonText = 'Iniciar sesión',
+    this.biometricButtonText = 'Ingresar con biometría',
   });
 
   @override
@@ -238,7 +242,7 @@ class _LoginFormState extends State<LoginForm> {
                           width: 20,
                           child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                         )
-                      : const Text('Ingresar'),
+                      : Text(widget.loginButtonText),
                 ),
               ),
             ],
@@ -258,7 +262,7 @@ class _LoginFormState extends State<LoginForm> {
           OutlinedButton.icon(
             onPressed: _doBiometric,
             icon: const Icon(Icons.fingerprint),
-            label: const Text('Ingresar con biometría'),
+            label: Text(widget.biometricButtonText),
           ),
         ],
         if (widget.enableGoogle || widget.enableApple) ...[
