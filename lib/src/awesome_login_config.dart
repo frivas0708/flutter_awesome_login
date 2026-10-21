@@ -27,6 +27,7 @@ class AwesomeLoginConfig {
 
   //URL API
   final String apiUrl;
+  final bool showURL;
 
   // Callbacks principales
   final Future<LoginResult> Function(String email, String password)? onLogin;
@@ -71,6 +72,7 @@ class AwesomeLoginConfig {
     this.changePasswordButtonText = 'Cambiar',
     this.biometricButtonText = 'Usar biometría',
     this.apiUrl = "Url not set",
+    this.showURL = false,
     this.onLogin,
     this.onRegister,
     this.onCustomRegister,
@@ -106,6 +108,8 @@ class AwesomeLoginConfig {
     Future<LoginResult> Function()? onAppleSignIn,
     bool? enableRememberEmail,
     String? rememberEmailText,
+    String? apiUrl,
+    bool? showURL,
   }) {
     return AwesomeLoginConfig(
       logo: logo ?? this.logo,
@@ -126,7 +130,8 @@ class AwesomeLoginConfig {
       verifyButtonText: verifyButtonText,
       changePasswordButtonText: changePasswordButtonText,
       biometricButtonText: biometricButtonText,
-      apiUrl: apiUrl,
+      apiUrl: apiUrl ?? this.apiUrl,
+      showURL: showURL ?? this.showURL,
       onLogin: onLogin,
       onRegister: onRegister,
       onCustomRegister: onCustomRegister ?? this.onCustomRegister,

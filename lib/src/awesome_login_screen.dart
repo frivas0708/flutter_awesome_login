@@ -35,7 +35,7 @@ class AwesomeLoginScreen extends StatelessWidget {
     final width = isWide ? 520.0 : constraints.maxWidth * 0.95;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 60.0),
+      padding: const EdgeInsets.symmetric(vertical: 50.0),
       child: SizedBox(
         width: width,
         child: Stack(
@@ -43,42 +43,39 @@ class AwesomeLoginScreen extends StatelessWidget {
           children: [
             // Logo
             SizedBox(
-              height: 125,
+              height: 160,
               child: config.logo ??
-                   CircleAvatar(
-                     radius: 44,
-                     backgroundColor: config.primaryColor,
-                     child: Icon(Icons.lock, color: config.accentColor, size: 40),
-              ),
+                  CircleAvatar(
+                    radius: 44,
+                    backgroundColor: config.primaryColor,
+                    child:
+                        Icon(Icons.lock, color: config.accentColor, size: 40),
+                  ),
             ),
-            SizedBox(
-              height: 260,
-              child: kDebugMode
-                  ? Center(
-                      child: Text(
-                        (config.apiUrl.contains('dev.') ? 'QA' : 'PROD'),
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.7),
-                          fontWeight: FontWeight.bold,
-                        ),
+            // if (kDebugMode && config.showURL)
+            //   SizedBox(
+            //       height: 10,
+            //       child: Center(
+            //         child: Text(
+            //           (config.apiUrl.contains('dev.') ? 'QA' : 'PROD'),
+            //           style: TextStyle(
+            //             color: Colors.white.withValues(alpha: 0.7),
+            //             fontWeight: FontWeight.bold,
+            //           ),
+            //         ),
+            //       )),
+            if (kDebugMode && config.showURL)
+              SizedBox(
+                  height: 310,
+                  child: Center(
+                    child: Text(
+                      config.apiUrl,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.7),
+                        fontWeight: FontWeight.bold,
                       ),
-                    )
-                  : null,
-            ),
-            SizedBox(
-              height: 290,
-              child: kDebugMode
-                  ? Center(
-                      child: Text(
-                        config.apiUrl,
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.7),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  : null,
-            ),
+                    ),
+                  )),
 
             // Card (se coloca con padding para que el logo quede encima)
             Padding(
