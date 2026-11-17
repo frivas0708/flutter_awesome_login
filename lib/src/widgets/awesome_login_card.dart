@@ -71,6 +71,8 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           key: const ValueKey('login'),
           onLogin: cfg.onLogin!,
           onSwitchRegister: cfg.onCustomRegister ?? () => _flipTo(_Mode.register),
+          showRegisterButton: cfg.showRegisterButton &&
+              (cfg.onRegister != null || cfg.onCustomRegister != null),
           onSwitchForgot: () => _flipTo(_Mode.recover),
           onSwitchTwoFactor: () => _flipTo(_Mode.twoFactor),
           onSwitchChangePassword: () => _flipTo(_Mode.changePassword),
@@ -176,7 +178,6 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
       },
     );
   }
-
 
   @override
   void dispose() {

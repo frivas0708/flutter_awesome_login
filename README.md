@@ -99,7 +99,7 @@ AwesomeLoginConfig(
 )
 ```
 
-When `onCustomRegister` is `null`, the widget flips to its built-in name/email/password registration card.
+When `onCustomRegister` is `null` and `onRegister` is provided, the widget flips to its built-in name/email/password registration card.
 
 ---
 
@@ -114,6 +114,7 @@ When `onCustomRegister` is `null`, the widget flips to its built-in name/email/p
 | `enableGoogle` | `bool` | `false` | Shows Google sign-in button |
 | `enableApple` | `bool` | `false` | Shows Apple sign-in button |
 | `enableRememberEmail` | `bool` | `true` | Enables "Remember email" checkbox |
+| `showRegisterButton` | `bool` | `true` | Allows hiding the registration link; it is only shown when `onRegister` or `onCustomRegister` is configured |
 | `twoFactorTitle` | `String` | `'Verificación 2FA'` | Title for 2FA screen |
 | `changePasswordTitle` | `String` | `'Cambiar Contraseña'`| Title for force password change |
 | `recoverTitle` | `String` | `'Recuperar Contraseña'`| Title for forgot password |
@@ -122,6 +123,16 @@ When `onCustomRegister` is `null`, the widget flips to its built-in name/email/p
 | `onCustomRegister` | `VoidCallback?` | `null` | Custom registration callback |
 | `onRecover` | `Future<String?> Function(String)?` | `null` | Forgot password handler |
 | `onVerify2FA` | `Future<LoginResult> Function(String)?` | `null` | 2FA OTP code verification handler |
+
+The "Create account" link is shown by default when a registration handler is provided. Set `showRegisterButton: false` to hide it:
+
+```dart
+AwesomeLoginConfig(
+  onLogin: _handleLogin,
+  onRegister: _handleRegister,
+  showRegisterButton: false,
+)
+```
 
 ---
 

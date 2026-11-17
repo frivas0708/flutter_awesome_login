@@ -17,7 +17,7 @@ class AwesomeLoginConfig {
   final String recoverTitle;
   final String twoFactorTitle;
   final String changePasswordTitle;
-  
+
   final String loginButtonText;
   final String registerButtonText;
   final String recoverButtonText;
@@ -31,7 +31,8 @@ class AwesomeLoginConfig {
 
   // Callbacks principales
   final Future<LoginResult> Function(String email, String password)? onLogin;
-  final Future<String?> Function(String name, String email, String password)? onRegister;
+  final Future<String?> Function(String name, String email, String password)?
+      onRegister;
   final VoidCallback? onCustomRegister;
   final Future<String?> Function(String email)? onRecover;
   final VoidCallback? onEnterResetCode;
@@ -49,6 +50,7 @@ class AwesomeLoginConfig {
   // Recordar email
   final bool enableRememberEmail;
   final String rememberEmailText;
+  final bool showRegisterButton;
   final Future<LoginResult> Function()? onGoogleSignIn;
   final Future<LoginResult> Function()? onAppleSignIn;
 
@@ -88,6 +90,7 @@ class AwesomeLoginConfig {
     this.onAppleSignIn,
     this.enableRememberEmail = true,
     this.rememberEmailText = 'Recordar correo',
+    this.showRegisterButton = true,
   });
 
   /// Convenience copyWith to tweak config in example/demo
@@ -108,6 +111,7 @@ class AwesomeLoginConfig {
     Future<LoginResult> Function()? onAppleSignIn,
     bool? enableRememberEmail,
     String? rememberEmailText,
+    bool? showRegisterButton,
     String? apiUrl,
     bool? showURL,
   }) {
@@ -146,6 +150,7 @@ class AwesomeLoginConfig {
       onAppleSignIn: onAppleSignIn ?? this.onAppleSignIn,
       enableRememberEmail: enableRememberEmail ?? this.enableRememberEmail,
       rememberEmailText: rememberEmailText ?? this.rememberEmailText,
+      showRegisterButton: showRegisterButton ?? this.showRegisterButton,
     );
   }
 }

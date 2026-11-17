@@ -22,6 +22,7 @@ class LoginForm extends StatefulWidget {
   final String rememberEmailText;
   final String loginButtonText;
   final String biometricButtonText;
+  final bool showRegisterButton;
 
   const LoginForm({
     super.key,
@@ -40,6 +41,7 @@ class LoginForm extends StatefulWidget {
     this.rememberEmailText = 'Recordar correo',
     this.loginButtonText = 'Iniciar sesión',
     this.biometricButtonText = 'Ingresar con biometría',
+    this.showRegisterButton = true,
   });
 
   @override
@@ -253,10 +255,11 @@ class _LoginFormState extends State<LoginForm> {
           onPressed: widget.onSwitchForgot,
           child: const Text('¿Olvidaste tu contraseña?'),
         ),
-        TextButton(
-          onPressed: widget.onSwitchRegister,
-          child: const Text('Crear cuenta'),
-        ),
+        if (widget.showRegisterButton)
+          TextButton(
+            onPressed: widget.onSwitchRegister,
+            child: const Text('Crear cuenta'),
+          ),
         if (enableBiometrics) ...[
           const SizedBox(height: 8),
           OutlinedButton.icon(
