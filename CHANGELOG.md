@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.4
+
+- Made the registration link conditional on a configured registration handler and added the `showRegisterButton` option to hide it.
+
 ## 1.0.3
 
 - Added `onCustomRegister` callback to `AwesomeLoginConfig` to support external onboarding and custom registration wizards.
