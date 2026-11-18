@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.5
+
+- Add customizable field hints and password visibility toggle in forms
+
 ## 1.0.4
 
 - Made the registration link conditional on a configured registration handler and added the `showRegisterButton` option to hide it.

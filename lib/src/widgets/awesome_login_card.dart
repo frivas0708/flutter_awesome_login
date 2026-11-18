@@ -70,7 +70,8 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
         return LoginForm(
           key: const ValueKey('login'),
           onLogin: cfg.onLogin!,
-          onSwitchRegister: cfg.onCustomRegister ?? () => _flipTo(_Mode.register),
+          onSwitchRegister:
+              cfg.onCustomRegister ?? () => _flipTo(_Mode.register),
           showRegisterButton: cfg.showRegisterButton &&
               (cfg.onRegister != null || cfg.onCustomRegister != null),
           onSwitchForgot: () => _flipTo(_Mode.recover),
@@ -84,6 +85,9 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           onAppleSignIn: cfg.onAppleSignIn,
           enableRememberEmail: cfg.enableRememberEmail,
           rememberEmailText: cfg.rememberEmailText,
+          title: cfg.loginTitle,
+          emailHintText: cfg.loginEmailHintText,
+          passwordHintText: cfg.loginPasswordHintText,
           loginButtonText: cfg.loginButtonText,
           biometricButtonText: cfg.biometricButtonText,
         );
@@ -92,6 +96,11 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           key: const ValueKey('register'),
           onRegister: cfg.onRegister!,
           onSwitchLogin: () => _flipTo(_Mode.login),
+          title: cfg.registerTitle,
+          nameHintText: cfg.registerNameHintText,
+          emailHintText: cfg.registerEmailHintText,
+          passwordHintText: cfg.registerPasswordHintText,
+          buttonText: cfg.registerButtonText,
         );
       case _Mode.recover:
         return ForgotPasswordForm(
@@ -101,6 +110,7 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           onEnterResetCode: cfg.onEnterResetCode,
           title: cfg.recoverTitle,
           buttonText: cfg.recoverButtonText,
+          emailHintText: cfg.recoverEmailHintText,
         );
       case _Mode.twoFactor:
         return TwoFactorForm(
@@ -109,14 +119,18 @@ class _AwesomeLoginCardState extends State<AwesomeLoginCard>
           onCancel: () => _flipTo(_Mode.login),
           title: cfg.twoFactorTitle,
           buttonText: cfg.verifyButtonText,
+          codeHintText: cfg.twoFactorCodeHintText,
         );
       case _Mode.changePassword:
         return ChangePasswordForm(
           key: const ValueKey('changePassword'),
-          onChangePassword: cfg.onChangePassword ?? (pass) async => 'Cambio de contraseña no configurado',
+          onChangePassword: cfg.onChangePassword ??
+              (pass) async => 'Cambio de contraseña no configurado',
           onCancel: () => _flipTo(_Mode.login),
           title: cfg.changePasswordTitle,
           buttonText: cfg.changePasswordButtonText,
+          newPasswordHintText: cfg.changePasswordNewPasswordHintText,
+          confirmPasswordHintText: cfg.changePasswordConfirmPasswordHintText,
         );
     }
   }

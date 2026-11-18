@@ -2,13 +2,23 @@ import 'package:flutter/material.dart';
 
 class RegisterForm extends StatefulWidget {
   final Future<String?> Function(String name, String email, String password)
-  onRegister;
+      onRegister;
   final VoidCallback onSwitchLogin;
+  final String title;
+  final String nameHintText;
+  final String emailHintText;
+  final String passwordHintText;
+  final String buttonText;
 
   const RegisterForm({
     super.key,
     required this.onRegister,
     required this.onSwitchLogin,
+    this.title = 'Crear Cuenta',
+    this.nameHintText = 'Nombre',
+    this.emailHintText = 'Email',
+    this.passwordHintText = 'Contraseña',
+    this.buttonText = 'Registrarse',
   });
 
   @override
@@ -21,6 +31,7 @@ class _RegisterFormState extends State<RegisterForm> {
   final _email = TextEditingController();
   final _pass = TextEditingController();
   bool _loading = false;
+  bool _obscurePassword = true;
 
   @override
   void dispose() {
@@ -53,7 +64,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Crear Cuenta', style: Theme.of(context).textTheme.titleLarge),
+        Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
         Form(
           key: _formKey,
@@ -71,16 +82,15 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 child: TextFormField(
                   controller: _name,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Nombre',
+                    hintText: widget.nameHintText,
                   ),
                   validator: (v) => (v == null || v.trim().isEmpty)
                       ? 'Campo requerido'
                       : null,
                 ),
               ),
-
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -94,9 +104,9 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 child: TextFormField(
                   controller: _email,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Email',
+                    hintText: widget.emailHintText,
                   ),
                   validator: (v) =>
                       (v == null || !v.contains('@')) ? 'Email inválido' : null,
@@ -115,11 +125,26 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 child: TextFormField(
                   controller: _pass,
-                  decoration: const InputDecoration(
+                  obscureText: _obscurePassword,
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Contraseña',
+                    hintText: widget.passwordHintText,
+                    suffixIcon: IconButton(
+                      tooltip: _obscurePassword
+                          ? 'Mostrar contraseña'
+                          : 'Ocultar contraseña',
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
-                  obscureText: true,
                   validator: (v) => (v == null || v.length < 6)
                       ? 'Mínimo 6 caracteres'
                       : null,
@@ -141,7 +166,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   onPressed: _loading ? null : _submit,
                   child: _loading
                       ? const CircularProgressIndicator()
-                      : const Text('Registrarse'),
+                      : Text(widget.buttonText),
                 ),
               ),
             ],

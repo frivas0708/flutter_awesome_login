@@ -18,6 +18,16 @@ class AwesomeLoginConfig {
   final String twoFactorTitle;
   final String changePasswordTitle;
 
+  final String loginEmailHintText;
+  final String loginPasswordHintText;
+  final String registerNameHintText;
+  final String registerEmailHintText;
+  final String registerPasswordHintText;
+  final String recoverEmailHintText;
+  final String twoFactorCodeHintText;
+  final String changePasswordNewPasswordHintText;
+  final String changePasswordConfirmPasswordHintText;
+
   final String loginButtonText;
   final String registerButtonText;
   final String recoverButtonText;
@@ -67,6 +77,15 @@ class AwesomeLoginConfig {
     this.recoverTitle = 'Recuperar Contraseña',
     this.twoFactorTitle = 'Verificación de 2 Pasos',
     this.changePasswordTitle = 'Cambiar Contraseña',
+    this.loginEmailHintText = 'Email',
+    this.loginPasswordHintText = 'Contraseña',
+    this.registerNameHintText = 'Nombre',
+    this.registerEmailHintText = 'Email',
+    this.registerPasswordHintText = 'Contraseña',
+    this.recoverEmailHintText = 'Email',
+    this.twoFactorCodeHintText = 'Código',
+    this.changePasswordNewPasswordHintText = 'Nueva contraseña',
+    this.changePasswordConfirmPasswordHintText = 'Confirmar contraseña',
     this.loginButtonText = 'Iniciar sesión',
     this.registerButtonText = 'Registrar',
     this.recoverButtonText = 'Enviar',
@@ -112,6 +131,26 @@ class AwesomeLoginConfig {
     bool? enableRememberEmail,
     String? rememberEmailText,
     bool? showRegisterButton,
+    String? loginTitle,
+    String? registerTitle,
+    String? recoverTitle,
+    String? twoFactorTitle,
+    String? changePasswordTitle,
+    String? loginEmailHintText,
+    String? loginPasswordHintText,
+    String? registerNameHintText,
+    String? registerEmailHintText,
+    String? registerPasswordHintText,
+    String? recoverEmailHintText,
+    String? twoFactorCodeHintText,
+    String? changePasswordNewPasswordHintText,
+    String? changePasswordConfirmPasswordHintText,
+    String? loginButtonText,
+    String? registerButtonText,
+    String? recoverButtonText,
+    String? verifyButtonText,
+    String? changePasswordButtonText,
+    String? biometricButtonText,
     String? apiUrl,
     bool? showURL,
   }) {
@@ -123,17 +162,34 @@ class AwesomeLoginConfig {
       cardColor: cardColor ?? this.cardColor,
       cardElevation: cardElevation ?? this.cardElevation,
       cardShadowColor: cardShadowColor ?? this.cardShadowColor,
-      loginTitle: loginTitle,
-      registerTitle: registerTitle,
-      recoverTitle: recoverTitle,
-      twoFactorTitle: twoFactorTitle,
-      changePasswordTitle: changePasswordTitle,
-      loginButtonText: loginButtonText,
-      registerButtonText: registerButtonText,
-      recoverButtonText: recoverButtonText,
-      verifyButtonText: verifyButtonText,
-      changePasswordButtonText: changePasswordButtonText,
-      biometricButtonText: biometricButtonText,
+      loginTitle: loginTitle ?? this.loginTitle,
+      registerTitle: registerTitle ?? this.registerTitle,
+      recoverTitle: recoverTitle ?? this.recoverTitle,
+      twoFactorTitle: twoFactorTitle ?? this.twoFactorTitle,
+      changePasswordTitle: changePasswordTitle ?? this.changePasswordTitle,
+      loginEmailHintText: loginEmailHintText ?? this.loginEmailHintText,
+      loginPasswordHintText:
+          loginPasswordHintText ?? this.loginPasswordHintText,
+      registerNameHintText: registerNameHintText ?? this.registerNameHintText,
+      registerEmailHintText:
+          registerEmailHintText ?? this.registerEmailHintText,
+      registerPasswordHintText:
+          registerPasswordHintText ?? this.registerPasswordHintText,
+      recoverEmailHintText: recoverEmailHintText ?? this.recoverEmailHintText,
+      twoFactorCodeHintText:
+          twoFactorCodeHintText ?? this.twoFactorCodeHintText,
+      changePasswordNewPasswordHintText: changePasswordNewPasswordHintText ??
+          this.changePasswordNewPasswordHintText,
+      changePasswordConfirmPasswordHintText:
+          changePasswordConfirmPasswordHintText ??
+              this.changePasswordConfirmPasswordHintText,
+      loginButtonText: loginButtonText ?? this.loginButtonText,
+      registerButtonText: registerButtonText ?? this.registerButtonText,
+      recoverButtonText: recoverButtonText ?? this.recoverButtonText,
+      verifyButtonText: verifyButtonText ?? this.verifyButtonText,
+      changePasswordButtonText:
+          changePasswordButtonText ?? this.changePasswordButtonText,
+      biometricButtonText: biometricButtonText ?? this.biometricButtonText,
       apiUrl: apiUrl ?? this.apiUrl,
       showURL: showURL ?? this.showURL,
       onLogin: onLogin,

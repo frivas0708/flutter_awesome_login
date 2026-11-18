@@ -20,6 +20,9 @@ class LoginForm extends StatefulWidget {
 
   final bool enableRememberEmail;
   final String rememberEmailText;
+  final String title;
+  final String emailHintText;
+  final String passwordHintText;
   final String loginButtonText;
   final String biometricButtonText;
   final bool showRegisterButton;
@@ -39,6 +42,9 @@ class LoginForm extends StatefulWidget {
     this.onAppleSignIn,
     this.enableRememberEmail = true,
     this.rememberEmailText = 'Recordar correo',
+    this.title = 'Iniciar Sesión',
+    this.emailHintText = 'Email',
+    this.passwordHintText = 'Contraseña',
     this.loginButtonText = 'Iniciar sesión',
     this.biometricButtonText = 'Ingresar con biometría',
     this.showRegisterButton = true,
@@ -54,6 +60,7 @@ class _LoginFormState extends State<LoginForm> {
   final _pass = TextEditingController();
   bool _loading = false;
   bool _rememberEmail = false;
+  bool _obscurePassword = true;
 
   static const _storage = FlutterSecureStorage();
   static const _savedEmailKey = 'awesome_login_saved_email';
@@ -94,7 +101,8 @@ class _LoginFormState extends State<LoginForm> {
     } else if (!res.success && res.errorMessage != null) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(backgroundColor: Colors.red, content: Text(res.errorMessage!)),
+          SnackBar(
+              backgroundColor: Colors.red, content: Text(res.errorMessage!)),
         );
       }
     }
@@ -142,14 +150,15 @@ class _LoginFormState extends State<LoginForm> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Iniciar Sesión', style: Theme.of(context).textTheme.titleLarge),
+        Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 16),
         Form(
           key: _formKey,
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -158,16 +167,18 @@ class _LoginFormState extends State<LoginForm> {
                 child: TextFormField(
                   controller: _email,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Email',
+                    hintText: widget.emailHintText,
                   ),
-                  validator: (v) => (v == null || !v.contains('@')) ? 'Email inválido' : null,
+                  validator: (v) =>
+                      (v == null || !v.contains('@')) ? 'Email inválido' : null,
                 ),
               ),
               const SizedBox(height: 10),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -175,12 +186,29 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 child: TextFormField(
                   controller: _pass,
-                  obscureText: true,
-                  decoration: const InputDecoration(
+                  obscureText: _obscurePassword,
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Contraseña',
+                    hintText: widget.passwordHintText,
+                    suffixIcon: IconButton(
+                      tooltip: _obscurePassword
+                          ? 'Mostrar contraseña'
+                          : 'Ocultar contraseña',
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
-                  validator: (v) => (v == null || v.length < 6) ? 'Mínimo 6 caracteres' : null,
+                  validator: (v) => (v == null || v.length < 6)
+                      ? 'Mínimo 6 caracteres'
+                      : null,
                 ),
               ),
               if (widget.enableRememberEmail) ...[
@@ -242,7 +270,8 @@ class _LoginFormState extends State<LoginForm> {
                       ? const SizedBox(
                           height: 20,
                           width: 20,
-                          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                          child: CircularProgressIndicator(
+                              strokeWidth: 2, color: Colors.white),
                         )
                       : Text(widget.loginButtonText),
                 ),

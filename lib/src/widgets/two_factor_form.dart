@@ -5,6 +5,7 @@ class TwoFactorForm extends StatefulWidget {
   final VoidCallback onCancel;
   final String title;
   final String buttonText;
+  final String codeHintText;
 
   const TwoFactorForm({
     super.key,
@@ -12,6 +13,7 @@ class TwoFactorForm extends StatefulWidget {
     required this.onCancel,
     required this.title,
     required this.buttonText,
+    this.codeHintText = 'Código',
   });
 
   @override
@@ -34,7 +36,7 @@ class _TwoFactorFormState extends State<TwoFactorForm> {
     setState(() => _loading = true);
     final error = await widget.onVerify(_codeController.text.trim());
     setState(() => _loading = false);
-    
+
     if (error != null && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(backgroundColor: Colors.red, content: Text(error)),
@@ -66,11 +68,12 @@ class _TwoFactorFormState extends State<TwoFactorForm> {
             child: TextFormField(
               controller: _codeController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Código',
+                hintText: widget.codeHintText,
               ),
-              validator: (v) => (v == null || v.isEmpty) ? 'Ingresa el código' : null,
+              validator: (v) =>
+                  (v == null || v.isEmpty) ? 'Ingresa el código' : null,
             ),
           ),
         ),

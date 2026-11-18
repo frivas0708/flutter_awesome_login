@@ -5,6 +5,8 @@ class ChangePasswordForm extends StatefulWidget {
   final VoidCallback onCancel;
   final String title;
   final String buttonText;
+  final String newPasswordHintText;
+  final String confirmPasswordHintText;
 
   const ChangePasswordForm({
     super.key,
@@ -12,6 +14,8 @@ class ChangePasswordForm extends StatefulWidget {
     required this.onCancel,
     required this.title,
     required this.buttonText,
+    this.newPasswordHintText = 'Nueva contraseña',
+    this.confirmPasswordHintText = 'Confirmar contraseña',
   });
 
   @override
@@ -23,6 +27,8 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
   final _pass1 = TextEditingController();
   final _pass2 = TextEditingController();
   bool _loading = false;
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   void dispose() {
@@ -61,7 +67,8 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -69,17 +76,35 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                 ),
                 child: TextFormField(
                   controller: _pass1,
-                  obscureText: true,
-                  decoration: const InputDecoration(
+                  obscureText: _obscurePassword,
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Nueva contraseña',
+                    hintText: widget.newPasswordHintText,
+                    suffixIcon: IconButton(
+                      tooltip: _obscurePassword
+                          ? 'Mostrar contraseña'
+                          : 'Ocultar contraseña',
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
-                  validator: (v) => (v == null || v.length < 6) ? 'Mínimo 6 caracteres' : null,
+                  validator: (v) => (v == null || v.length < 6)
+                      ? 'Mínimo 6 caracteres'
+                      : null,
                 ),
               ),
               const SizedBox(height: 10),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -87,10 +112,25 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                 ),
                 child: TextFormField(
                   controller: _pass2,
-                  obscureText: true,
-                  decoration: const InputDecoration(
+                  obscureText: _obscureConfirmPassword,
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Confirmar contraseña',
+                    hintText: widget.confirmPasswordHintText,
+                    suffixIcon: IconButton(
+                      tooltip: _obscureConfirmPassword
+                          ? 'Mostrar contraseña'
+                          : 'Ocultar contraseña',
+                      icon: Icon(
+                        _obscureConfirmPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureConfirmPassword = !_obscureConfirmPassword;
+                        });
+                      },
+                    ),
                   ),
                   validator: (v) {
                     if (v != _pass1.text) return 'Las contraseñas no coinciden';

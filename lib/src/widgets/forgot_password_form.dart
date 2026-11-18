@@ -6,6 +6,7 @@ class ForgotPasswordForm extends StatefulWidget {
   final VoidCallback? onEnterResetCode;
   final String title;
   final String buttonText;
+  final String emailHintText;
 
   const ForgotPasswordForm({
     super.key,
@@ -14,6 +15,7 @@ class ForgotPasswordForm extends StatefulWidget {
     this.onEnterResetCode,
     this.title = 'Recuperar Contraseña',
     this.buttonText = 'Enviar',
+    this.emailHintText = 'Email',
   });
 
   @override
@@ -71,15 +73,14 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                 ),
                 child: TextFormField(
                   controller: _email,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Email',
+                    hintText: widget.emailHintText,
                   ),
                   validator: (v) =>
                       (v == null || !v.contains('@')) ? 'Email inválido' : null,
                 ),
               ),
-
               const SizedBox(height: 12),
               SizedBox(
                 width: double.infinity,

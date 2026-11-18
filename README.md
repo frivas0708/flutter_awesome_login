@@ -17,6 +17,8 @@ A modern, responsive, and animated authentication card for Flutter applications.
 - 🌐 **Social Sign-In Buttons**: Optional Google & Apple sign-in hooks.
 - 🎯 **Decoupled Architecture (`onCustomRegister`)**: Easily plug in your own custom multi-step registration or SaaS onboarding wizard.
 - 🎨 **Highly Customizable**: Custom logos, background colors, card colors, button text, and titles.
+- ✏️ **Customizable Field Hints**: Set a different `hintText` for every field from `AwesomeLoginConfig`.
+- 👁️ **Password Visibility Toggle**: Show or hide passwords in login, registration, and password-change forms.
 
 ---
 
@@ -118,6 +120,11 @@ When `onCustomRegister` is `null` and `onRegister` is provided, the widget flips
 | `twoFactorTitle` | `String` | `'Verificación 2FA'` | Title for 2FA screen |
 | `changePasswordTitle` | `String` | `'Cambiar Contraseña'`| Title for force password change |
 | `recoverTitle` | `String` | `'Recuperar Contraseña'`| Title for forgot password |
+| `loginEmailHintText` / `loginPasswordHintText` | `String` | `'Email'` / `'Contraseña'` | Hints for login fields |
+| `registerNameHintText` / `registerEmailHintText` / `registerPasswordHintText` | `String` | `'Nombre'` / `'Email'` / `'Contraseña'` | Hints for registration fields |
+| `recoverEmailHintText` | `String` | `'Email'` | Hint for the recovery email field |
+| `twoFactorCodeHintText` | `String` | `'Código'` | Hint for the 2FA code field |
+| `changePasswordNewPasswordHintText` / `changePasswordConfirmPasswordHintText` | `String` | `'Nueva contraseña'` / `'Confirmar contraseña'` | Hints for both password-change fields |
 | `onLogin` | `Future<LoginResult> Function(String, String)` | **Required** | Triggered on login submit |
 | `onRegister` | `Future<String?> Function(String, String, String)?` | `null` | Built-in registration handler |
 | `onCustomRegister` | `VoidCallback?` | `null` | Custom registration callback |
@@ -131,6 +138,11 @@ AwesomeLoginConfig(
   onLogin: _handleLogin,
   onRegister: _handleRegister,
   showRegisterButton: false,
+  loginEmailHintText: 'Work email',
+  loginPasswordHintText: 'Enter your password',
+  registerNameHintText: 'Full name',
+  registerEmailHintText: 'Work email',
+  registerPasswordHintText: 'Choose a password',
 )
 ```
 
